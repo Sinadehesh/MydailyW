@@ -1,0 +1,376 @@
+/*
+ * Educational Empire Hub - CSS Variables
+ * Complete design system with 4 switchable themes
+ */
+
+/* ===================================
+   TYPOGRAPHY SYSTEM
+   =================================== */
+
+:root {
+  /* Font Families */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body: 'Crimson Text', Georgia, serif;
+  --font-script: 'Allura', cursive;
+  --font-sans: 'Montserrat', 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Type Scale - Fluid Typography */
+  --text-display-1: clamp(4rem, 10vw, 8rem);
+  --text-display-2: clamp(3rem, 7vw, 5rem);
+  --text-h1: clamp(2.5rem, 5vw, 4rem);
+  --text-h2: clamp(2rem, 4vw, 3rem);
+  --text-h3: clamp(1.5rem, 3vw, 2rem);
+  --text-h4: clamp(1.25rem, 2.5vw, 1.5rem);
+  --text-body-lg: clamp(1.2rem, 2.5vw, 1.4rem);
+  --text-body: clamp(1rem, 2vw, 1.1rem);
+  --text-small: 0.9rem;
+  --text-xs: 0.8rem;
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-snug: 1.4;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.8;
+  --leading-loose: 2;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+  --tracking-widest: 0.2em;
+
+  /* ===================================
+     SPACING SYSTEM
+     =================================== */
+
+  --space-3xs: clamp(0.25rem, 0.5vw, 0.375rem);
+  --space-2xs: clamp(0.5rem, 1vw, 0.75rem);
+  --space-xs: clamp(0.75rem, 1.5vw, 1rem);
+  --space-sm: clamp(1rem, 2vw, 1.5rem);
+  --space-md: clamp(1.5rem, 3vw, 2rem);
+  --space-lg: clamp(2rem, 4vw, 3rem);
+  --space-xl: clamp(3rem, 6vw, 4rem);
+  --space-2xl: clamp(4rem, 8vw, 6rem);
+  --space-3xl: clamp(6rem, 12vw, 10rem);
+
+  /* ===================================
+     LAYOUT
+     =================================== */
+
+  --container-max: 1440px;
+  --container-wide: 1200px;
+  --container-narrow: 800px;
+  --container-text: 65ch;
+
+  --nav-height: 80px;
+  --nav-height-scrolled: 60px;
+
+  /* ===================================
+     BORDERS & RADIUS
+     =================================== */
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  --border-thin: 1px;
+  --border-medium: 2px;
+  --border-thick: 3px;
+
+  /* ===================================
+     SHADOWS
+     =================================== */
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+
+  /* Glow shadows */
+  --glow-sm: 0 0 10px;
+  --glow-md: 0 0 20px;
+  --glow-lg: 0 0 40px;
+
+  /* ===================================
+     TRANSITIONS
+     =================================== */
+
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --duration-slower: 800ms;
+  --duration-slowest: 1200ms;
+
+  /* ===================================
+     Z-INDEX SCALE
+     =================================== */
+
+  --z-below: -1;
+  --z-base: 0;
+  --z-above: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-popover: 600;
+  --z-tooltip: 700;
+  --z-max: 9999;
+
+  /* ===================================
+     GRADIENTS (Shared)
+     =================================== */
+
+  --gradient-sunset: linear-gradient(135deg, #FF6B6B, #FFE66D, #4ECDC4);
+  --gradient-royal: linear-gradient(135deg, #667EEA, #764BA2, #F093FB);
+  --gradient-earth: linear-gradient(135deg, #8B4513, #D2691E, #F4A460);
+  --gradient-ocean: linear-gradient(135deg, #2E3192, #1BFFFF, #00F2FE);
+  --gradient-holographic: conic-gradient(from 0deg, #ff0080, #ff8c00, #ffff00, #00ff00, #00ffff, #0080ff, #8000ff, #ff0080);
+}
+
+/* ===================================
+   THEME: RENAISSANCE (Default)
+   =================================== */
+
+:root,
+[data-theme="renaissance"] {
+  /* Primary Palette */
+  --color-primary: #8B1538;
+  --color-primary-light: #B01E4A;
+  --color-primary-dark: #6A1029;
+  
+  --color-secondary: #CC5803;
+  --color-secondary-light: #E86B1A;
+  --color-secondary-dark: #A34602;
+  
+  --color-accent: #D4AF37;
+  --color-accent-light: #E5C55A;
+  --color-accent-dark: #B8972E;
+
+  /* Neutrals */
+  --color-neutral-darkest: #1A1A1A;
+  --color-neutral-dark: #2C2C2C;
+  --color-neutral-mid: #5A5A5A;
+  --color-neutral-light: #8A8A8A;
+  --color-neutral-lighter: #D4D0C8;
+  --color-neutral-lightest: #F5F1E8;
+
+  /* Supporting Colors */
+  --color-support-1: #1E3A8A; /* Ultramarine Blue */
+  --color-support-2: #2F4F2F; /* Forest Green */
+  --color-support-3: #E07A5F; /* Terracotta */
+  --color-support-4: #9B2335; /* Ruby */
+
+  /* Semantic */
+  --color-background: var(--color-neutral-lightest);
+  --color-surface: #FFFFFF;
+  --color-text: var(--color-neutral-dark);
+  --color-text-muted: var(--color-neutral-mid);
+  --color-text-inverse: var(--color-neutral-lightest);
+  --color-border: var(--color-neutral-lighter);
+
+  /* Theme-specific gradient */
+  --gradient-hero: linear-gradient(135deg, 
+    var(--color-primary) 0%, 
+    var(--color-secondary) 25%, 
+    var(--color-accent) 50%, 
+    #2F4F2F 75%, 
+    var(--color-support-1) 100%
+  );
+  
+  --gradient-text: linear-gradient(135deg,
+    #8B1538, #CC5803, #D4AF37, #2F4F2F, #1E3A8A, #9B2335, #E07A5F
+  );
+}
+
+/* ===================================
+   THEME: IMPRESSIONIST
+   =================================== */
+
+[data-theme="impressionist"] {
+  /* Primary Palette */
+  --color-primary: #967BB6;
+  --color-primary-light: #B09AC7;
+  --color-primary-dark: #7A5FA5;
+  
+  --color-secondary: #FFCBA4;
+  --color-secondary-light: #FFD9BE;
+  --color-secondary-dark: #F5B88A;
+  
+  --color-accent: #9CAF88;
+  --color-accent-light: #B5C4A5;
+  --color-accent-dark: #849A6F;
+
+  /* Neutrals */
+  --color-neutral-darkest: #2A3642;
+  --color-neutral-dark: #4A5C6A;
+  --color-neutral-mid: #6B7F8E;
+  --color-neutral-light: #9AABB8;
+  --color-neutral-lighter: #D8E0E6;
+  --color-neutral-lightest: #FDFBF7;
+
+  /* Supporting Colors */
+  --color-support-1: #87CEEB; /* Sky Blue */
+  --color-support-2: #C9A9A6; /* Dusty Rose */
+  --color-support-3: #F4E4C1; /* Pale Yellow */
+  --color-support-4: #B8A9C9; /* Wisteria */
+
+  /* Semantic */
+  --color-background: var(--color-neutral-lightest);
+  --color-surface: #FFFFFF;
+  --color-text: var(--color-neutral-dark);
+  --color-text-muted: var(--color-neutral-mid);
+  --color-text-inverse: var(--color-neutral-lightest);
+  --color-border: var(--color-neutral-lighter);
+
+  /* Theme-specific gradient */
+  --gradient-hero: linear-gradient(135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 25%,
+    var(--color-accent) 50%,
+    #87CEEB 75%,
+    #C9A9A6 100%
+  );
+
+  --gradient-text: linear-gradient(135deg,
+    #967BB6, #FFCBA4, #9CAF88, #87CEEB, #C9A9A6, #F4E4C1, #967BB6
+  );
+}
+
+/* ===================================
+   THEME: ART DECO
+   =================================== */
+
+[data-theme="art-deco"] {
+  /* Primary Palette */
+  --color-primary: #0D0D0D;
+  --color-primary-light: #1F1F1F;
+  --color-primary-dark: #000000;
+  
+  --color-secondary: #F7E7CE;
+  --color-secondary-light: #FFF5E6;
+  --color-secondary-dark: #E8D4B5;
+  
+  --color-accent: #50C878;
+  --color-accent-light: #6FD894;
+  --color-accent-dark: #3CB371;
+
+  /* Neutrals */
+  --color-neutral-darkest: #0A0A0A;
+  --color-neutral-dark: #1C1C1C;
+  --color-neutral-mid: #3C3C3C;
+  --color-neutral-light: #6C6C6C;
+  --color-neutral-lighter: #CCCCCC;
+  --color-neutral-lightest: #FFFFF0;
+
+  /* Supporting Colors */
+  --color-support-1: #9B111E; /* Ruby Red */
+  --color-support-2: #0F52BA; /* Sapphire Blue */
+  --color-support-3: #CD7F32; /* Bronze */
+  --color-support-4: #C9B037; /* Gold */
+
+  /* Semantic */
+  --color-background: var(--color-neutral-lightest);
+  --color-surface: #FFFFFF;
+  --color-text: var(--color-neutral-dark);
+  --color-text-muted: var(--color-neutral-mid);
+  --color-text-inverse: var(--color-neutral-lightest);
+  --color-border: var(--color-neutral-lighter);
+
+  /* Theme-specific gradient */
+  --gradient-hero: linear-gradient(135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 25%,
+    var(--color-accent) 50%,
+    #CD7F32 75%,
+    #0F52BA 100%
+  );
+
+  --gradient-text: linear-gradient(135deg,
+    #F7E7CE, #50C878, #CD7F32, #0F52BA, #9B111E, #C9B037, #F7E7CE
+  );
+}
+
+/* ===================================
+   THEME: CONTEMPORARY
+   =================================== */
+
+[data-theme="contemporary"] {
+  /* Primary Palette */
+  --color-primary: #36454F;
+  --color-primary-light: #4A5E6A;
+  --color-primary-dark: #283540;
+  
+  --color-secondary: #E2725B;
+  --color-secondary-light: #E8897A;
+  --color-secondary-dark: #D15A42;
+  
+  --color-accent: #FFDB58;
+  --color-accent-light: #FFE47A;
+  --color-accent-dark: #E5C440;
+
+  /* Neutrals */
+  --color-neutral-darkest: #000000;
+  --color-neutral-dark: #1A1A1A;
+  --color-neutral-mid: #4A4A4A;
+  --color-neutral-light: #7A7A7A;
+  --color-neutral-lighter: #D4D4D4;
+  --color-neutral-lightest: #FAF9F6;
+
+  /* Supporting Colors */
+  --color-support-1: #6E8CA0; /* Dusty Blue */
+  --color-support-2: #808000; /* Olive */
+  --color-support-3: #E0B0FF; /* Mauve */
+  --color-support-4: #8B4513; /* Saddle Brown */
+
+  /* Semantic */
+  --color-background: var(--color-neutral-lightest);
+  --color-surface: #FFFFFF;
+  --color-text: var(--color-neutral-dark);
+  --color-text-muted: var(--color-neutral-mid);
+  --color-text-inverse: var(--color-neutral-lightest);
+  --color-border: var(--color-neutral-lighter);
+
+  /* Theme-specific gradient */
+  --gradient-hero: linear-gradient(135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 25%,
+    var(--color-accent) 50%,
+    #6E8CA0 75%,
+    #808000 100%
+  );
+
+  --gradient-text: linear-gradient(135deg,
+    #36454F, #E2725B, #FFDB58, #6E8CA0, #808000, #E0B0FF, #36454F
+  );
+}
+
+/* ===================================
+   DARK MODE VARIANTS
+   =================================== */
+
+[data-mode="dark"] {
+  --color-background: var(--color-neutral-darkest);
+  --color-surface: var(--color-neutral-dark);
+  --color-text: var(--color-neutral-lightest);
+  --color-text-muted: var(--color-neutral-light);
+  --color-text-inverse: var(--color-neutral-dark);
+  --color-border: var(--color-neutral-mid);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.5);
+}

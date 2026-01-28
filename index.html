@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="renaissance">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sina Dehesh | Aesthetic Education & Digital Courses</title>
+    <meta name="description"
+        content="Explore Daily Sublime art observation magazine and The Hustle Course for entrepreneurs. Premium digital education by Sina Dehesh.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sina Dehesh | Aesthetic Education & Digital Courses">
+    <meta property="og:description"
+        content="Where Aesthetics Become Education. Daily Sublime Magazine & The Hustle Course.">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        /* Critical inline styles for hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background: var(--color-neutral-darkest);
+        }
+
+        .hero__bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero__bg-layer {
+            position: absolute;
+            inset: 0;
+        }
+
+        .hero__bg-gradient {
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(139, 21, 56, 0.4) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(204, 88, 3, 0.2) 0%, transparent 70%),
+                linear-gradient(180deg, var(--color-neutral-darkest) 0%, #1a1520 50%, var(--color-neutral-darkest) 100%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        .hero__bg-pattern {
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: rotateSlow 120s linear infinite;
+        }
+
+        .hero__bg-noise {
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            padding: var(--space-xl);
+        }
+
+        .hero__tagline {
+            font-family: var(--font-script);
+            font-size: var(--text-h2);
+            color: var(--color-accent);
+            margin-bottom: var(--space-md);
+            opacity: 0;
+            animation: fadeInUp 0.8s var(--ease-out) 0.3s forwards;
+        }
+
+        .hero__title {
+            font-family: var(--font-display);
+            font-size: var(--text-display-1);
+            font-weight: 400;
+            letter-spacing: var(--tracking-tight);
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            background: var(--gradient-text);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s var(--ease-out) 0.5s forwards, gradientShift 8s ease infinite;
+            opacity: 0;
+        }
+
+        .hero__subtitle {
+            font-family: var(--font-body);
+            font-size: var(--text-body-lg);
+            color: var(--color-neutral-lighter);
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+            line-height: var(--leading-relaxed);
+            opacity: 0;
+            animation: fadeInUp 0.6s var(--ease-out) 0.7s forwards;
+        }
+
+        .hero__cta {
+            opacity: 0;
+            animation: scaleInBounce 0.8s var(--ease-bounce) 1s forwards;
+        }
+
+        .hero__scroll {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            color: var(--color-neutral-light);
+            font-size: var(--text-small);
+            animation: fadeIn 1s var(--ease-out) 1.5s forwards;
+            opacity: 0;
+        }
+
+        .hero__scroll-icon {
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--color-accent);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .hero__scroll-icon::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 2px;
+            animation: float 1.5s ease-in-out infinite;
+        }
+
+        /* Floating decorative elements */
+        .hero__decor {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero__decor--1 {
+            top: 15%;
+            left: 10%;
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            animation: gentleFloat 8s ease-in-out infinite;
+        }
+
+        .hero__decor--2 {
+            top: 25%;
+            right: 15%;
+            width: 60px;
+            height: 60px;
+            background: rgba(139, 21, 56, 0.1);
+            transform: rotate(45deg);
+            animation: floatRotate 10s ease-in-out infinite;
+        }
+
+        .hero__decor--3 {
+            bottom: 20%;
+            left: 20%;
+            width: 80px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+            animation: gentleFloat 6s ease-in-out infinite reverse;
+        }
+
+        .hero__decor--4 {
+            bottom: 30%;
+            right: 10%;
+            font-family: var(--font-display);
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.03);
+            animation: floatRotate 15s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="container">
+            <div class="nav__inner">
+                <a href="#" class="nav__logo">
+                    <span class="nav__logo-text">Sina Dehesh</span>
+                </a>
+
+                <div class="nav__menu" id="navMenu">
+                    <a href="#sublime" class="nav-link">Daily Sublime</a>
+                    <a href="#hustle" class="nav-link">Hustle Course</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#resources" class="nav-link">Resources</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+
+                <div class="nav__actions">
+                    <button class="nav__theme" id="themeToggle" aria-label="Change theme">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                    </button>
+                    <a href="#newsletter" class="btn btn--holographic btn--sm">Subscribe</a>
+                    <button class="nav__hamburger" id="navHamburger" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero section--hero" id="hero">
+            <div class="hero__bg">
+                <div class="hero__bg-layer hero__bg-gradient"></div>
+                <div class="hero__bg-layer hero__bg-pattern"></div>
+                <div class="hero__bg-layer hero__bg-noise"></div>
+            </div>
+
+            <div class="hero__decor hero__decor--1"></div>
+            <div class="hero__decor hero__decor--2"></div>
+            <div class="hero__decor hero__decor--3"></div>
+            <div class="hero__decor hero__decor--4">❧</div>
+
+            <div class="hero__content">
+                <p class="hero__tagline">Where Aesthetics Become Education</p>
+                <h1 class="hero__title">Cultivate Your Eye.<br>Launch Your Vision.</h1>
+                <p class="hero__subtitle">
+                    Discover the art of attention through Daily Sublime Magazine and transform
+                    your ideas into reality with The Hustle Course. Premium digital education
+                    for aesthetes and entrepreneurs.
+                </p>
+                <div class="hero__cta">
+                    <a href="#sublime" class="btn btn--portal">
+                        <span>Enter the Collection</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero__scroll">
+                <div class="hero__scroll-icon"></div>
+                <span>Scroll to Explore</span>
+            </div>
+        </section>
+
+        <!-- Daily Sublime Section -->
+        <section class="section" id="sublime">
+            <div class="section-divider">
+                <div class="section-divider__ornament"></div>
+                <div class="flourish">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="grid grid--bento" data-scroll-stagger>
+                    <!-- Featured -->
+                    <div class="bento-featured card card--ornate" data-scroll="fade-up">
+                        <div class="card__content">
+                            <span class="badge badge--accent">Featured Edition</span>
+                            <h3 class="heading-2" style="margin-top: var(--space-md);">The Sublime Gaze</h3>
+                            <p style="margin-top: var(--space-sm); color: var(--color-text-muted);">Today's artwork
+                                invites you to slow down and notice what you've never seen before...</p>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="bento-description" data-scroll="fade-up">
+                        <h2 class="heading-1" style="margin-bottom: var(--space-md);">
+                            <span class="text-gradient">Daily Sublime</span> Magazine
+                        </h2>
+                        <p class="heading-script" style="color: var(--color-accent); margin-bottom: var(--space-lg);">
+                            Art Observation as Daily Ritual</p>
+                        <p class="drop-cap"
+                            style="line-height: var(--leading-relaxed); margin-bottom: var(--space-md);">
+                            Each morning, receive a curated artwork from museums worldwide paired with guided
+                            observation exercises. Train your eye, slow your mind, and discover the sublime in art's
+                            details.
+                        </p>
+                        <p style="line-height: var(--leading-relaxed); color: var(--color-text-muted);">
+                            Perfect for aesthetes, artists, and anyone seeking daily beauty. Build an aesthetic
+                            vocabulary that transforms how you see the world.
+                        </p>
+                        <a href="https://daily.sinadehesh.com" class="btn btn--primary"
+                            style="margin-top: var(--space-lg);">Start Your Free Week</a>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="bento-stat stat" data-scroll="scale">
+                        <span class="stat__icon">📧</span>
+                        <span class="stat__number counter" data-target="200">0</span>
+                        <span class="stat__label">Daily Editions</span>
+                    </div>
+
+                    <div class="bento-stat stat" data-scroll="scale">
+                        <span class="stat__icon">🎨</span>
+                        <span class="stat__number counter" data-target="50">0</span>
+                        <span class="stat__label">Museums</span>
+                    </div>
+
+                    <div class="bento-stat stat" data-scroll="scale">
+                        <span class="stat__icon">⏱️</span>
+                        <span class="stat__number">5</span>
+                        <span class="stat__label">Minutes Daily</span>
+                    </div>
+
+                    <!-- Testimonial -->
+                    <div class="bento-testimonial card card--glass" data-scroll="fade-up">
+                        <div class="testimonial">
+                            <p class="testimonial__quote">"Daily Sublime has completely changed how I experience art and
+                                beauty in my everyday life."</p>
+                            <p class="testimonial__author">— Sarah M., Art Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hustle Course Section -->
+        <section class="section section--dark" id="hustle">
+            <div class="container">
+                <div class="stack stack--xl" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <div data-scroll="fade-up">
+                        <span class="badge" style="margin-bottom: var(--space-md);">27-Day Program</span>
+                        <h2 class="heading-1 text-gradient">The Hustle Course</h2>
+                        <p class="heading-script" style="color: var(--color-accent);">From Idea to Launch in 27 Days</p>
+                    </div>
+
+                    <p data-scroll="fade-up"
+                        style="font-size: var(--text-body-lg); line-height: var(--leading-relaxed); color: var(--color-neutral-light);">
+                        A step-by-step framework transforming your idea into a launched, revenue-generating side hustle.
+                        Based on proven principles, adapted for digital creators and solopreneurs ready for action.
+                    </p>
+
+                    <!-- Week Timeline -->
+                    <div class="grid grid--auto-sm" data-scroll-stagger style="margin-top: var(--space-xl);">
+                        <div class="card card--ornate hover-lift">
+                            <div class="card__content" style="text-align: center;">
+                                <span style="font-size: 3rem;">💡</span>
+                                <h3 class="heading-3" style="margin: var(--space-sm) 0;">Week 1</h3>
+                                <p style="color: var(--color-text-muted);">Build an Arsenal of Ideas</p>
+                                <span class="badge badge--outline" style="margin-top: var(--space-xs);">Days 1-5</span>
+                            </div>
+                        </div>
+
+                        <div class="card card--ornate hover-lift">
+                            <div class="card__content" style="text-align: center;">
+                                <span style="font-size: 3rem;">🎯</span>
+                                <h3 class="heading-3" style="margin: var(--space-sm) 0;">Week 2</h3>
+                                <p style="color: var(--color-text-muted);">Select Your Best Idea</p>
+                                <span class="badge badge--outline" style="margin-top: var(--space-xs);">Days 6-10</span>
+                            </div>
+                        </div>
+
+                        <div class="card card--ornate hover-lift">
+                            <div class="card__content" style="text-align: center;">
+                                <span style="font-size: 3rem;">🚀</span>
+                                <h3 class="heading-3" style="margin: var(--space-sm) 0;">Week 3</h3>
+                                <p style="color: var(--color-text-muted);">Prepare for Liftoff</p>
+                                <span class="badge badge--outline" style="margin-top: var(--space-xs);">Days
+                                    11-16</span>
+                            </div>
+                        </div>
+
+                        <div class="card card--ornate hover-lift">
+                            <div class="card__content" style="text-align: center;">
+                                <span style="font-size: 3rem;">📢</span>
+                                <h3 class="heading-3" style="margin: var(--space-sm) 0;">Week 4</h3>
+                                <p style="color: var(--color-text-muted);">Launch to the Right People</p>
+                                <span class="badge badge--outline" style="margin-top: var(--space-xs);">Days
+                                    17-22</span>
+                            </div>
+                        </div>
+
+                        <div class="card card--ornate hover-lift">
+                            <div class="card__content" style="text-align: center;">
+                                <span style="font-size: 3rem;">📈</span>
+                                <h3 class="heading-3" style="margin: var(--space-sm) 0;">Week 5</h3>
+                                <p style="color: var(--color-text-muted);">Regroup & Refine</p>
+                                <span class="badge badge--outline" style="margin-top: var(--space-xs);">Days
+                                    23-27</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div data-scroll="scale" style="margin-top: var(--space-2xl);">
+                        <a href="https://hustle.sinadehesh.com" class="btn btn--xl btn--portal">
+                            <span>Begin Your 27-Day Journey</span>
+                        </a>
+                        <div class="seal" style="margin: var(--space-lg) auto 0;">
+                            <span class="seal__text">30-Day<br>Money-Back<br>Guarantee</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section" id="about">
+            <div class="container">
+                <div class="grid grid--editorial">
+                    <div data-scroll="fade-right" class="decorative-corners" style="padding: var(--space-lg);">
+                        <div
+                            style="aspect-ratio: 3/4; background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 8rem; opacity: 0.3;">👤</span>
+                        </div>
+                    </div>
+
+                    <div data-scroll="fade-left" class="stack stack--lg">
+                        <div>
+                            <h2 class="heading-1">Meet <span class="text-gradient">Sina Dehesh</span></h2>
+                            <p class="heading-script" style="color: var(--color-accent);">Entrepreneur, Aesthetic
+                                Educator, Digital Creator</p>
+                        </div>
+
+                        <p class="drop-cap" style="line-height: var(--leading-relaxed);">
+                            Sina Dehesh is an entrepreneur, aesthetic educator, and digital creator based in Ponte San
+                            Pietro, Italy. With a background in psychology (both bachelor and master level), Sina
+                            explores the intersection of attention, observation, and beauty in the digital age.
+                        </p>
+
+                        <div class="pull-quote">
+                            "Modern life erodes our capacity for sustained attention and aesthetic appreciation. I'm
+                            here to help you reclaim it."
+                        </div>
+
+                        <p style="line-height: var(--leading-relaxed); color: var(--color-text-muted);">
+                            After founding Daily Sublime—a daily art observation practice delivered via email to
+                            thousands worldwide—Sina developed The Hustle Course to help others transform their ideas
+                            into launched digital products.
+                        </p>
+
+                        <div class="flex flex--wrap flex--gap-sm">
+                            <span class="tag">Art Observation</span>
+                            <span class="tag">Digital Products</span>
+                            <span class="tag">Copywriting</span>
+                            <span class="tag">Aesthetic Design</span>
+                            <span class="tag">Creator Economy</span>
+                            <span class="tag">Psychology</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="section section--dark" id="newsletter">
+            <div class="container container--narrow" style="text-align: center;">
+                <div data-scroll="fade-up" class="stack stack--lg">
+                    <h2 class="heading-1 text-gradient">Never Miss a Masterpiece</h2>
+                    <p style="font-size: var(--text-body-lg); color: var(--color-neutral-light);">
+                        Join the community of aesthetes and entrepreneurs. Get weekly insights on art, business, and the
+                        pursuit of beauty.
+                    </p>
+
+                    <form class="flex flex--center flex--gap-md" style="flex-wrap: wrap;"
+                        onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                        <input type="email" class="form-input form-input--ornate" placeholder="Enter your email"
+                            required style="flex: 1; min-width: 280px;">
+                        <button type="submit" class="btn btn--primary btn--lg">Subscribe</button>
+                    </form>
+
+                    <p style="font-size: var(--text-small); color: var(--color-neutral-mid);">
+                        🔒 Your privacy matters. Unsubscribe anytime.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="section" id="contact"
+        style="background: var(--color-neutral-dark); color: var(--color-text-inverse); padding-block: var(--space-xl);">
+        <div class="container">
+            <div class="grid grid--4" style="gap: var(--space-xl);">
+                <div>
+                    <h3 class="heading-3" style="margin-bottom: var(--space-md);">Sina Dehesh</h3>
+                    <p style="color: var(--color-neutral-light);">Where aesthetics become education.</p>
+                </div>
+                <div>
+                    <h4 style="font-weight: 600; margin-bottom: var(--space-sm);">Explore</h4>
+                    <div class="stack stack--sm" style="color: var(--color-neutral-light);">
+                        <a href="#sublime" class="hover-underline">Daily Sublime</a>
+                        <a href="#hustle" class="hover-underline">Hustle Course</a>
+                        <a href="#about" class="hover-underline">About</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-weight: 600; margin-bottom: var(--space-sm);">Legal</h4>
+                    <div class="stack stack--sm" style="color: var(--color-neutral-light);">
+                        <a href="#" class="hover-underline">Privacy Policy</a>
+                        <a href="#" class="hover-underline">Terms of Service</a>
+                        <a href="#" class="hover-underline">Refund Policy</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 style="font-weight: 600; margin-bottom: var(--space-sm);">Connect</h4>
+                    <p
+                        style="color: var(--color-neutral-light); font-family: var(--font-mono); font-size: var(--text-small);">
+                        hello@sinadehesh.com</p>
+                </div>
+            </div>
+
+            <div class="ornament-line" style="margin-top: var(--space-xl);"></div>
+
+            <p style="text-align: center; color: var(--color-neutral-mid); margin-top: var(--space-lg);">
+                © 2026 Sina Dehesh. Crafted with ❧ for beauty seekers everywhere.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
