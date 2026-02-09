@@ -31,177 +31,394 @@
     <link rel="stylesheet" href="css/responsive.css">
 
     <style>
-        /* Critical inline styles for hero */
-        .hero {
-            position: relative;
+        /* =====================================================
+            MYDAILYW - DAILY SUBLIME INSPIRED DESIGN
+            ===================================================== */
+
+        :root {
+            /* Core Color Palette - Refined Luxury */
+            --bg-primary: #08080a;
+            --bg-surface: #0f1013;
+            --bg-card: #161820;
+            --bg-elevated: #1c1e26;
+
+            /* Text Colors with Hierarchy */
+            --text-main: #f5ece0;
+            --text-secondary: #c8bfb0;
+            --text-muted: #8a8279;
+
+            /* Accent Colors - Luxurious Gold System */
+            --accent-gold: #d4af37;
+            --accent-gold-light: #e5c866;
+            --accent-gold-dark: #a68a29;
+            --accent-amber: #f59e0b;
+
+            /* Gradients */
+            --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f5d270 50%, #d4af37 100%);
+            --gradient-hero: linear-gradient(135deg, rgba(8, 8, 10, 0.85) 0%, rgba(8, 8, 10, 0.4) 40%, rgba(8, 8, 10, 0.95) 100%);
+
+            /* Shadows & Glows */
+            --shadow-lg: 0 24px 64px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 40px 80px rgba(0, 0, 0, 0.6);
+            --glow-gold: 0 0 40px rgba(212, 175, 55, 0.4);
+            --glow-gold-intense: 0 0 60px rgba(212, 175, 55, 0.6);
+
+            /* Typography Scale - Fluid */
+            --fs-hero: clamp(3rem, 8vw, 7rem);
+            --fs-lg: clamp(1.75rem, 3.5vw, 3rem);
+            --fs-base: clamp(1rem, 1.5vw, 1.25rem);
+
+            /* Spacing */
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+
+            /* Transitions */
+            --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+            --radius-full: 100px;
+        }
+
+        /* Hero Section - Immersive Full-Screen */
+        .hero-section {
             min-height: 100vh;
+            min-height: 100svh;
+            position: relative;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
+            justify-content: center;
             overflow: hidden;
-            background: var(--color-neutral-darkest);
         }
 
-        .hero__bg {
+        .hero-image {
             position: absolute;
             inset: 0;
-            z-index: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            transition: transform 8s ease-out, filter 0.8s ease;
         }
 
-        .hero__bg-layer {
+        .hero-section:hover .hero-image {
+            transform: scale(1.05);
+        }
+
+        .hero-overlay {
             position: absolute;
             inset: 0;
+            background: var(--gradient-hero);
+            z-index: 1;
         }
 
-        .hero__bg-gradient {
-            background:
-                radial-gradient(ellipse at 20% 80%, rgba(139, 21, 56, 0.4) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 50%, rgba(204, 88, 3, 0.2) 0%, transparent 70%),
-                linear-gradient(180deg, var(--color-neutral-darkest) 0%, #1a1520 50%, var(--color-neutral-darkest) 100%);
-            animation: gradientShift 15s ease infinite;
+        /* Animated Particles */
+        .hero-particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
         }
 
-        .hero__bg-pattern {
-            opacity: 0.05;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            animation: rotateSlow 120s linear infinite;
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatParticle 15s ease-in-out infinite;
+            opacity: 0.6;
         }
 
-        .hero__bg-noise {
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        .particle:nth-child(odd) {
+            background: radial-gradient(circle, var(--accent-amber) 0%, transparent 70%);
         }
 
-        .hero__content {
+        .particle:nth-child(1) {
+            width: 8px;
+            height: 8px;
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            width: 6px;
+            height: 6px;
+            top: 45%;
+            left: 85%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            width: 10px;
+            height: 10px;
+            top: 75%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            width: 5px;
+            height: 5px;
+            top: 10%;
+            left: 75%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(5) {
+            width: 7px;
+            height: 7px;
+            top: 65%;
+            left: 5%;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(6) {
+            width: 4px;
+            height: 4px;
+            top: 25%;
+            left: 90%;
+            animation-delay: 5s;
+        }
+
+        .particle:nth-child(7) {
+            width: 9px;
+            height: 9px;
+            top: 85%;
+            left: 55%;
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(8) {
+            width: 6px;
+            height: 6px;
+            top: 35%;
+            left: 15%;
+            animation-delay: 7s;
+        }
+
+        @keyframes floatParticle {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0) scale(1);
+                opacity: 0.4;
+            }
+
+            25% {
+                transform: translateY(-40px) translateX(20px) scale(1.2);
+                opacity: 0.8;
+            }
+
+            50% {
+                transform: translateY(-20px) translateX(-30px) scale(0.8);
+                opacity: 0.6;
+            }
+
+            75% {
+                transform: translateY(-60px) translateX(10px) scale(1.1);
+                opacity: 0.9;
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 0 var(--space-lg);
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: var(--fs-hero);
+            font-weight: 300;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(135deg, var(--text-main) 0%, var(--accent-gold) 50%, var(--accent-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: heroReveal 1.5s 0.3s var(--ease-out) forwards;
+            text-shadow: 0 0 80px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: var(--fs-lg);
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: heroReveal 1.5s 0.6s var(--ease-out) forwards;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+        }
+
+        .hero-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 0 auto var(--space-2xl);
+            max-width: 500px;
+            text-align: left;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroReveal 1.5s 0.7s var(--ease-out) forwards;
+        }
+
+        .hero-benefits li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+            color: var(--text-secondary);
+            font-size: var(--fs-base);
+            line-height: 1.6;
+        }
+
+        .hero-benefits li span:first-child {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            font-size: var(--fs-base);
+            font-weight: 600;
+            color: var(--bg-primary);
+            background: var(--gradient-gold);
+            padding: var(--space-md) var(--space-2xl);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            transition: all 0.5s var(--ease-bounce);
+            box-shadow: var(--shadow-lg), var(--glow-gold);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: heroReveal 1.5s 0.9s var(--ease-out) forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--accent-gold-light), var(--accent-amber));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-cta:hover::before {
+            opacity: 1;
+        }
+
+        .hero-cta span {
             position: relative;
             z-index: 1;
-            max-width: 1000px;
-            padding: var(--space-xl);
         }
 
-        .hero__tagline {
-            font-family: var(--font-script);
-            font-size: var(--text-h2);
-            color: var(--color-accent);
-            margin-bottom: var(--space-md);
-            opacity: 0;
-            animation: fadeInUp 0.8s var(--ease-out) 0.3s forwards;
+        .hero-cta:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-xl), var(--glow-gold-intense);
         }
 
-        .hero__title {
-            font-family: var(--font-display);
-            font-size: var(--text-display-1);
-            font-weight: 400;
-            letter-spacing: var(--tracking-tight);
-            line-height: 1.1;
-            margin-bottom: var(--space-lg);
-            background: var(--gradient-text);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUp 0.8s var(--ease-out) 0.5s forwards, gradientShift 8s ease infinite;
-            opacity: 0;
+        .hero-cta::after {
+            content: '→';
+            position: relative;
+            z-index: 1;
+            transition: transform 0.4s var(--ease-bounce);
         }
 
-        .hero__subtitle {
-            font-family: var(--font-body);
-            font-size: var(--text-body-lg);
-            color: var(--color-neutral-lighter);
-            max-width: 600px;
-            margin: 0 auto var(--space-xl);
-            line-height: var(--leading-relaxed);
-            opacity: 0;
-            animation: fadeInUp 0.6s var(--ease-out) 0.7s forwards;
+        .hero-cta:hover::after {
+            transform: translateX(5px);
         }
 
-        .hero__cta {
-            opacity: 0;
-            animation: scaleInBounce 0.8s var(--ease-bounce) 1s forwards;
+        @keyframes heroReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .hero__scroll {
+        /* Scroll Indicator */
+        .scroll-indicator {
             position: absolute;
             bottom: var(--space-xl);
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-xs);
-            color: var(--color-neutral-light);
-            font-size: var(--text-small);
-            animation: fadeIn 1s var(--ease-out) 1.5s forwards;
+            z-index: 10;
             opacity: 0;
+            animation: fadeIn 1s 2s forwards, bounce 2s 2s infinite;
         }
 
-        .hero__scroll-icon {
+        .scroll-indicator::before {
+            content: '';
+            display: block;
             width: 24px;
             height: 40px;
-            border: 2px solid var(--color-accent);
+            border: 2px solid var(--accent-gold);
             border-radius: 12px;
             position: relative;
         }
 
-        .hero__scroll-icon::before {
+        .scroll-indicator::after {
             content: '';
             position: absolute;
+            width: 4px;
+            height: 8px;
+            background: var(--accent-gold);
+            border-radius: 2px;
             top: 8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: var(--color-accent);
-            border-radius: 2px;
-            animation: float 1.5s ease-in-out infinite;
+            animation: scrollDot 2s infinite;
         }
 
-        /* Floating decorative elements */
-        .hero__decor {
-            position: absolute;
-            pointer-events: none;
-            z-index: 0;
+        @keyframes fadeIn {
+            to {
+                opacity: 0.7;
+            }
         }
 
-        .hero__decor--1 {
-            top: 15%;
-            left: 10%;
-            width: 100px;
-            height: 100px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 50%;
-            animation: gentleFloat 8s ease-in-out infinite;
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(10px);
+            }
         }
 
-        .hero__decor--2 {
-            top: 25%;
-            right: 15%;
-            width: 60px;
-            height: 60px;
-            background: rgba(139, 21, 56, 0.1);
-            transform: rotate(45deg);
-            animation: floatRotate 10s ease-in-out infinite;
+        @keyframes scrollDot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: translateX(-50%) translateY(12px);
+            }
         }
 
-        .hero__decor--3 {
-            bottom: 20%;
-            left: 20%;
-            width: 80px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-            animation: gentleFloat 6s ease-in-out infinite reverse;
-        }
-
-        .hero__decor--4 {
-            bottom: 30%;
-            right: 10%;
-            font-family: var(--font-display);
-            font-size: 8rem;
-            color: rgba(212, 175, 55, 0.03);
-            animation: floatRotate 15s ease-in-out infinite;
+        .hero-note {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            opacity: 0;
+            animation: heroReveal 1.5s 1.2s var(--ease-out) forwards;
         }
     </style>
 </head>
@@ -248,48 +465,41 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero section--hero" id="hero">
-            <div class="hero__bg">
-                <div class="hero__bg-layer hero__bg-gradient"></div>
-                <div class="hero__bg-layer hero__bg-pattern"></div>
-                <div class="hero__bg-layer hero__bg-noise"></div>
+        <section class="hero-section" id="hero">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg"
+                alt="Birth of Venus" class="hero-image" loading="eager">
+            <div class="hero-overlay"></div>
+            <div class="hero-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
             </div>
-
-            <div class="hero__decor hero__decor--1"></div>
-            <div class="hero__decor hero__decor--2"></div>
-            <div class="hero__decor hero__decor--3"></div>
-            <div class="hero__decor hero__decor--4">❧</div>
-
-            <div class="hero__content">
-                <p class="hero__tagline">myDailyw</p>
-                <h1 class="hero__title">Learn Art and be mindful!</h1>
-                <div class="hero__subtitle" style="text-align: left; max-width: 500px;">
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="display: flex; align-items: flex-start; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                            <span style="color: var(--color-accent); font-size: 1.2rem;">✦</span>
-                            <span>Everyday you will receive an Edition of the magazine</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: var(--space-sm); margin-bottom: var(--space-md);">
-                            <span style="color: var(--color-accent); font-size: 1.2rem;">✦</span>
-                            <span>You will do the mindfulness practice of the day</span>
-                        </li>
-                        <li style="display: flex; align-items: flex-start; gap: var(--space-sm);">
-                            <span style="color: var(--color-accent); font-size: 1.2rem;">✦</span>
-                            <span>You can get it free for a week</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="hero__cta">
-                    <a href="#sublime" class="btn btn--portal btn--lg" style="font-size: 1.1rem; padding: 1.25rem 2.5rem;">
-                        <span>Start Your Free Week</span>
-                    </a>
-                </div>
+            <div class="hero-content">
+                <h1 class="hero-title">myDailyw</h1>
+                <p class="hero-subtitle">Learn Art and be mindful!</p>
+                <ul class="hero-benefits">
+                    <li>
+                        <span>✦</span>
+                        <span>Everyday you will receive an Edition of the magazine</span>
+                    </li>
+                    <li>
+                        <span>✦</span>
+                        <span>You will do the mindfulness practice of the day</span>
+                    </li>
+                    <li>
+                        <span>✦</span>
+                        <span>You can get it free for a week</span>
+                    </li>
+                </ul>
+                <a href="#sublime" class="hero-cta"><span>Start Your Free Week</span></a>
+                <p class="hero-note">No app. Just email.</p>
             </div>
-
-            <div class="hero__scroll">
-                <div class="hero__scroll-icon"></div>
-                <span>Scroll to Explore</span>
-            </div>
+            <div class="scroll-indicator" aria-hidden="true"></div>
         </section>
 
         <!-- Daily Sublime Section -->
