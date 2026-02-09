@@ -260,28 +260,37 @@
 
         .hero-benefits {
             list-style: none;
-            padding: 0;
+            padding: var(--space-lg);
             margin: 0 auto var(--space-2xl);
-            max-width: 500px;
-            text-align: left;
+            max-width: 550px;
+            text-align: center;
             opacity: 0;
             transform: translateY(30px);
             animation: heroReveal 1.5s 0.7s var(--ease-out) forwards;
+            background: rgba(8, 8, 10, 0.6);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .hero-benefits li {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
+            justify-content: center;
             gap: var(--space-sm);
             margin-bottom: var(--space-md);
-            color: var(--text-secondary);
-            font-size: var(--fs-base);
+            color: var(--text-main);
+            font-size: clamp(1rem, 2vw, 1.15rem);
             line-height: 1.6;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-benefits li:last-child {
+            margin-bottom: 0;
         }
 
         .hero-benefits li span:first-child {
-            color: var(--accent-gold);
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             flex-shrink: 0;
         }
 
@@ -432,7 +441,7 @@
         <div class="container">
             <div class="nav__inner">
                 <a href="#" class="nav__logo">
-                    <span class="nav__logo-text">Sina Dehesh</span>
+                    <span class="nav__logo-text">MyDailyW</span>
                 </a>
 
                 <div class="nav__menu" id="navMenu">
@@ -466,8 +475,8 @@
     <main>
         <!-- Hero Section -->
         <section class="hero-section" id="hero">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg"
-                alt="Birth of Venus" class="hero-image" loading="eager">
+            <img src="https://daily.sinadehesh.com/hero-banner.jpg" alt="Masterwork Painting" class="hero-image"
+                loading="eager">
             <div class="hero-overlay"></div>
             <div class="hero-particles">
                 <div class="particle"></div>
@@ -480,19 +489,19 @@
                 <div class="particle"></div>
             </div>
             <div class="hero-content">
-                <h1 class="hero-title">myDailyw</h1>
+                <h1 class="hero-title">MyDailyW</h1>
                 <p class="hero-subtitle">Learn Art and be mindful!</p>
                 <ul class="hero-benefits">
                     <li>
-                        <span>✦</span>
+                        <span>📧</span>
                         <span>Everyday you will receive an Edition of the magazine</span>
                     </li>
                     <li>
-                        <span>✦</span>
+                        <span>🧘</span>
                         <span>You will do the mindfulness practice of the day</span>
                     </li>
                     <li>
-                        <span>✦</span>
+                        <span>🎉</span>
                         <span>You can get it free for a week</span>
                     </li>
                 </ul>
